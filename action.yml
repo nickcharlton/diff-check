@@ -1,9 +1,9 @@
 ---
-name: 'Diff Check'
-description: 'An Action which runs a command and fails if it changes anything.'
+name: Diff Check
+description: An Action which runs a command and fails if it changes anything.
 inputs:
   command:
-    description: 'Command to run'
+    description: Command to run
     required: true
 runs:
   using: "composite"
