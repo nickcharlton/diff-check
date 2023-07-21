@@ -12,6 +12,9 @@ runs:
       shell: bash
     - run: |
         if [ ! "$(git diff-index --quiet HEAD --)" ]; then
-          echo "::error::Diff Check Failed"
+          for n in $(git diff --name-only); do
+            echo "::error file={$n}::$n has changed"
+          done
+          echo 1
         fi
       shell: bash
