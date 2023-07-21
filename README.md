@@ -1,4 +1,3 @@
 # diff-check
 
-An Action which runs a command and fails if it changes anything.
-
+n Action which runs a command and fails if it changes anything.

@@ -5,6 +5,9 @@ inputs:
   command:
     description: Command to run
     required: true
+  message:
+    description: "Message to show when failing (e.g.: explaining what to do)"
+    default: "has changed"
 runs:
   using: "composite"
   steps:
@@ -13,7 +16,7 @@ runs:
     - run: |
         if [ ! "$(git diff-index --quiet HEAD --)" ]; then
           for n in $(git diff --name-only); do
-            echo "::error file=$n::$n has changed"
+            echo "::error file=$n::$n ${{ inputs.message }}"
           done
           exit 1
         fi
