@@ -15,6 +15,6 @@ runs:
           for n in $(git diff --name-only); do
             echo "::error file=$n::$n has changed"
           done
-          echo 1
+          exit 1
         fi
       shell: bash
