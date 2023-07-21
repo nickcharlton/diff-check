@@ -1,0 +1,17 @@
+---
+name: 'Diff Check'
+description: 'An Action which runs a command and fails if it changes anything.'
+inputs:
+  command:
+    description: 'Command to run'
+    required: true
+runs:
+  using: "composite"
+  steps:
+    - run: ${{ inputs.command }}
+      shell: bash
+    - run: |
+        if [ ! "$(git diff-index --quiet HEAD --)" ]; then
+          echo "::error::Diff Check Failed"
+        fi
+      shell: bash

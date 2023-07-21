@@ -1,0 +1,13 @@
+---
+name: Demo
+on:
+  push:
+
+jobs:
+  demo:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: nickcharlton/diff-check@add-diff-check
+        with:
+          command: cat "hello world" >> README.md
