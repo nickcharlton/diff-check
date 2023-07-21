@@ -13,7 +13,7 @@ runs:
     - run: |
         if [ ! "$(git diff-index --quiet HEAD --)" ]; then
           for n in $(git diff --name-only); do
-            echo "::error file={$n}::$n has changed"
+            echo "::error file=$n::$n has changed"
           done
           echo 1
         fi
