@@ -10,4 +10,4 @@ jobs:
       - uses: actions/checkout@v3
       - uses: nickcharlton/diff-check@add-diff-check
         with:
-          command: cat "hello world" >> README.md
+          command: echo "hello world" >> README.md
