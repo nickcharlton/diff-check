@@ -1,0 +1,12 @@
+---
+name: diff-check
+on: [push]
+
+jobs:
+  demo:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: nickcharlton/diff-check@main
+        with:
+          command: echo "hello world" >> README.md
