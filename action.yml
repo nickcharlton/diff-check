@@ -1,0 +1,24 @@
+---
+name: Diff Check
+description: An Action which runs a command and fails if it changes anything.
+inputs:
+  command:
+    description: Command to run
+    required: true
+  message:
+    description: "Message to show when failing (e.g.: explaining what to do)"
+    default: "has changed"
+runs:
+  using: "composite"
+  steps:
+    - run: ${{ inputs.command }}
+      shell: bash
+
+    - name: Add Action to $GITHUB_PATH
+      run: echo "$GITHUB_ACTION_PATH" >> $GITHUB_PATH
+      shell: bash
+      env:
+        GITHUB_ACTION_PATH: ${{ github.action_path }}
+
+    - run: bin/diff-check >> $GITHUB_STEP_SUMMARY
+      shell: bash

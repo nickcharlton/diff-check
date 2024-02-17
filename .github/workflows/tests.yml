@@ -1,0 +1,22 @@
+---
+name: Tests
+on:
+  push:
+    branches:
+      - 'main'
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  rspec:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+      - name: Setup Git author for test repo
+        run: |
+          git config --global user.email "diff-check@example.com"
+          git config --global user.name "Diff Check"
+      - run: bundle exec rspec
