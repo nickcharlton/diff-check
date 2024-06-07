@@ -14,11 +14,7 @@ runs:
     - run: ${{ inputs.command }}
       shell: bash
 
-    - name: Add Action to $GITHUB_PATH
-      run: echo "$GITHUB_ACTION_PATH" >> $GITHUB_PATH
+    - run: $GITHUB_ACTION_PATH/bin/diff-check >> $GITHUB_STEP_SUMMARY
       shell: bash
       env:
         GITHUB_ACTION_PATH: ${{ github.action_path }}
-
-    - run: bin/diff-check >> $GITHUB_STEP_SUMMARY
-      shell: bash
