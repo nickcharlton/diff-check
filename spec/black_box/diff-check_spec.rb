@@ -25,7 +25,7 @@ RSpec.describe "diff-check" do
       expect(session.run("diff-check")).to have_stdout(<<~SUMMARY
         These files changed when running the command:
 
-        * README
+        * `README`
       SUMMARY
                                                       )
     end
