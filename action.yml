@@ -15,9 +15,8 @@ runs:
       shell: bash
 
     - run: >
-        result=$($GITHUB_ACTION_PATH/bin/diff-check)
-        echo "$result"
-        GITHUB_STEP_SUMMARY="$result"
+        GITHUB_STEP_SUMMARY=$($GITHUB_ACTION_PATH/bin/diff-check)
+        echo "$GITHUB_STEP_SUMMARY"
       shell: bash
       env:
         GITHUB_ACTION_PATH: ${{ github.action_path }}
