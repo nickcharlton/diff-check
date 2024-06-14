@@ -14,7 +14,7 @@ runs:
     - run: ${{ inputs.command }}
       shell: bash
 
-    - run: >
+    - run: |
         GITHUB_STEP_SUMMARY=$($GITHUB_ACTION_PATH/bin/diff-check)
         echo "$GITHUB_STEP_SUMMARY"
       shell: bash
