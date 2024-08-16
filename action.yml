@@ -14,7 +14,7 @@ runs:
     - run: ${{ inputs.command }}
       shell: bash
 
-    - run: $GITHUB_ACTION_PATH/bin/diff-check >> $GITHUB_STEP_SUMMARY
+    - run: $GITHUB_ACTION_PATH/bin/diff-check | tee -a $GITHUB_STEP_SUMMARY
       shell: bash
       env:
         GITHUB_ACTION_PATH: ${{ github.action_path }}
