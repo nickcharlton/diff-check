@@ -18,3 +18,5 @@ runs:
       shell: bash
       env:
         GITHUB_ACTION_PATH: ${{ github.action_path }}
+
+    - uses: lhotari/action-upterm@v1
