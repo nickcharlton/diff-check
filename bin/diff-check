@@ -9,5 +9,7 @@ if ! git diff-index --quiet HEAD; then
 		echo "* \`$n\`"
 	done
 
+	git diff
+
 	exit 1
 fi
