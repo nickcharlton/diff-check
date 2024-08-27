@@ -14,9 +14,9 @@ runs:
     - run: ${{ inputs.command }}
       shell: bash
 
+    - uses: lhotari/action-upterm@v1
+
     - run: $GITHUB_ACTION_PATH/bin/diff-check | tee -a $GITHUB_STEP_SUMMARY
       shell: bash
       env:
         GITHUB_ACTION_PATH: ${{ github.action_path }}
-
-    - uses: lhotari/action-upterm@v1
