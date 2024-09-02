@@ -39,11 +39,31 @@ RSpec.describe "diff-check" do
     end
   end
 
+  context "with a non-content file change" do
+    it "emits no output" do
+      session = create_session
+
+      session.run("touch README")
+
+      expect(session.run("diff-check")).to have_no_stdout
+      expect(session.run("diff-check")).to have_no_stderr
+    end
+
+    it "exits with a status of 0" do
+      session = create_session
+
+      session.run("touch README")
+
+      expect(session.run("diff-check")).to be_a_success
+    end
+  end
+
   def create_session
     session = JetBlack::Session.new
 
     session.run("git init")
     session.run("echo 'Hello world' >> README")
+    session.run("touch -d '2 hours ago' README")
     session.run("git add .; git commit -m 'initial commit'")
 
     session
